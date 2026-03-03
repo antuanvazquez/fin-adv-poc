@@ -38,6 +38,7 @@ export default function VideoPage() {
   const [isFs, setIsFs] = useState(false);
   const [showControls, setShowControls] = useState(true);
   const [showSpeedPicker, setShowSpeedPicker] = useState(false);
+  const [showFsTip, setShowFsTip] = useState(true);
 
   useEffect(() => {
     const v = videoRef.current;
@@ -46,6 +47,11 @@ export default function VideoPage() {
     v.preservesPitch = true;
     (v as HTMLVideoElement & { webkitPreservesPitch?: boolean }).webkitPreservesPitch = true;
   }, [speed]);
+
+  useEffect(() => {
+    const t = setTimeout(() => setShowFsTip(false), 12000);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     const handler = () => {
@@ -120,6 +126,7 @@ export default function VideoPage() {
   };
 
   const toggleFullscreen = () => {
+    setShowFsTip(false);
     if (isFs) exitFullscreen();
     else enterFullscreen();
   };
@@ -339,6 +346,18 @@ export default function VideoPage() {
             </button>
           )}
         </div>
+
+        {/* Fullscreen tip — mobile only */}
+        {showFsTip && (
+          <div className="sm:hidden flex items-start justify-end px-4 mt-3 animate-pulse">
+            <div className="flex flex-col items-end gap-1">
+              <span className="text-[#C9A962] text-lg leading-none">↗</span>
+              <p className="text-xs text-[#C9A962] font-medium text-right leading-snug max-w-[200px]">
+                Tap <strong>Full</strong> and turn your phone sideways for the best experience
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
