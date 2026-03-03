@@ -11,8 +11,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Advisor Platform",
-  description: "Financial Advisory Intelligence Platform",
+  title: "Advisory Intelligence Platform",
+  description: "Advisory Intelligence Platform — Partner Preview",
   robots: { index: false, follow: false },
 };
 

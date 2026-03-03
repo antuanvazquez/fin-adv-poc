@@ -73,7 +73,7 @@ export default function Home() {
         </motion.div>
 
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center leading-tight">
-          Financial Advisory{' '}
+          Advisory{' '}
           <span className="text-[#C9A962]">Intelligence Platform</span>
         </h1>
         <p className="text-[#8B8FA3] mt-3 text-sm sm:text-base md:text-lg text-center max-w-xl px-2">
