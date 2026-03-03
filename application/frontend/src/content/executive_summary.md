@@ -6,7 +6,11 @@
 
 ## The Opportunity
 
-There are [32,445+ registered RIA firms](https://www.investmentadviser.org/iaatoday/press-release/2025-investment-adviser-industry-snapshot-shows-continued-growth-in-demand-for-adviser-services/) in the US ([15,870 SEC-registered](https://www.investmentadviser.org/iaatoday/press-release/2025-investment-adviser-industry-snapshot-shows-continued-growth-in-demand-for-adviser-services/) + [16,575 state-registered](https://www.investmentnews.com/regulation-legal-compliance/state-registered-rias-assets-top-360b-as-firm-count-slips-nasaa-says/262006)), [92.7% with 100 or fewer employees](https://www.investmentadviser.org/iaatoday/press-release/2025-investment-adviser-industry-snapshot-shows-continued-growth-in-demand-for-adviser-services/). Small-to-mid RIAs spend [$2,000–$12,500/month on technology](https://investipal.co/blog/7-technology-investments-financial-advisors-should-make-before-2026/), and [54% of advisors plan to increase that budget (avg. +19%)](https://www.planadviser.com/advisers-planning-increase-technology-ai-usage-spend/). No single platform combines all three capabilities — living financial plans, AI communication analysis, and proactive life signals — into one integrated tool for small-to-mid RIAs at an accessible price point. Orion's new Denali AI approaches this but targets enterprise firms. Zocks handles communication AI but isn't a planning platform. Trove (closed beta) surfaces signals but doesn't manage plans or communications. We integrate the full loop for the underserved 10–200 household advisor segment. We have the team to build it: Alanna brings real-time industry insight and product validation — her active practice serves as a built-in customer lens from day one, so we build with live feedback rather than guesswork. Joe contributes outstanding sales expertise, extensive industry experience, credibility, and a strong network. Antuan is a serial entrepreneur and builder-operator who covers the AI stack, the trust stack (cloud security, SOC 2 readiness), and the integrations that make the product sticky — amplified by AI development tools that compress what used to take a 5-person engineering team into a lean operation.
+There are [32,445+ registered RIA firms](https://www.investmentadviser.org/iaatoday/press-release/2025-investment-adviser-industry-snapshot-shows-continued-growth-in-demand-for-adviser-services/) in the US ([15,870 SEC-registered](https://www.investmentadviser.org/iaatoday/press-release/2025-investment-adviser-industry-snapshot-shows-continued-growth-in-demand-for-adviser-services/) + [16,575 state-registered](https://www.investmentnews.com/regulation-legal-compliance/state-registered-rias-assets-top-360b-as-firm-count-slips-nasaa-says/262006)), [92.7% with 100 or fewer employees](https://www.investmentadviser.org/iaatoday/press-release/2025-investment-adviser-industry-snapshot-shows-continued-growth-in-demand-for-adviser-services/). Small-to-mid RIAs spend [$2,000–$12,500/month on technology](https://investipal.co/blog/7-technology-investments-financial-advisors-should-make-before-2026/), and [54% of advisors plan to increase that budget (avg. +19%)](https://www.planadviser.com/advisers-planning-increase-technology-ai-usage-spend/).
+
+No single platform combines all three capabilities — living financial plans, AI communication analysis, and proactive life signals — into one integrated tool for small-to-mid RIAs at an accessible price point. Orion's new Denali AI approaches this but targets enterprise firms. Zocks handles communication AI but isn't a planning platform. Trove (closed beta) surfaces signals but doesn't manage plans or communications. We integrate the end-to-end workflow for the underserved 10–200 household advisor segment.
+
+**The team:** Alanna brings real-time industry insight and product validation — her active practice serves as a built-in customer lens from day one. Joe contributes outstanding sales expertise, extensive industry experience, credibility, and a strong network. Antuan is a serial entrepreneur and builder-operator who covers the AI stack, the trust stack (cloud security, SOC 2 readiness), and the integrations that make the product sticky — amplified by AI-assisted development that dramatically accelerates the build timeline while keeping costs low.
 
 ---
 
@@ -36,7 +40,7 @@ Build fast, validate with insiders. AI-assisted development means a functional P
 | Item | Cost | Notes |
 |---|---|---|
 | Engineering (Antuan) | Negotiable | AI-assisted development compresses timelines dramatically |
-| AI development tools (Claude Pro + API credits) | $1,000 | ~$1,000/mo — enables rapid iteration |
+| AI development tools + API credits | $1,000 | ~$1,000/mo — enables rapid iteration |
 | AWS infrastructure (hosting POC) | $100 | ~$50–$100/mo for lightweight deployment |
 | Domain registration + marketing site hosting | $40 | |
 | Discovery calls (5–15 advisors via XYPN/NAPFA) | $500 | Assumes mostly phone/video; can be much higher if a lot are in-person with meals or travel |
@@ -51,9 +55,9 @@ Incorporate feedback from Phase 0 into a production-ready MVP with compliance fo
 
 | Item | Cost | Notes |
 |---|---|---|
-| Engineering (Antuan) | Negotiable | Full-time build; AI tools compress a 5-person team's output into one |
+| Engineering (Antuan) | Negotiable | Full-time build; AI-assisted development dramatically accelerates output |
 | Contract engineer | $6,000 | ~$75/hr x 20 hrs/wk; starts mid-phase (~6–8 weeks of the 3-month phase) |
-| AI development tools (Claude Pro + API credits) | $3,000 | ~$1,000/mo x 3 months |
+| AI development tools + API credits | $3,000 | ~$1,000/mo x 3 months |
 | AWS infrastructure (dev + staging + prod) | $750 | ~$250/mo x 3 months (infra plan includes Multi-AZ, CloudTrail, GuardDuty, WAF — SOC 2 requirements baked in) |
 | [AWS Activate credits (Founders)](https://aws.amazon.com/activate/founders/) | –$1,000 | Immediate upon application — no VC required |
 | Anthropic API credits (production AI features) | $450 | ~$150/mo at low volume during beta |
@@ -162,7 +166,7 @@ Even in the worst case, the investment is modest relative to the revenue opportu
 
 **Built-in product validation.** Alanna's active practice gives us real-time industry feedback from day one — we build with a live advisor lens, not in a vacuum. Her stated willingness to pay ($5,000+/mo) anchors our pricing confidence.
 
-**AI makes us fast.** AI-assisted development compresses what used to require a 3–5 person team into a lean operation. A functional POC can be live within days; a production MVP within weeks. Monthly burn stays low even as we scale.
+**AI makes us fast.** AI-assisted development dramatically accelerates the build timeline. A functional POC can be live within days; a production MVP within weeks. Monthly burn stays low even as we scale.
 
 **Cloud credits slash infrastructure cost.** [AWS Activate](https://aws.amazon.com/activate/founders/) ($1K–$100K) and [NVIDIA Inception](https://www.nvidia.com/en-us/startups/) (free, no equity) can cover our infrastructure bill for the first 12–18 months.
 

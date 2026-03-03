@@ -1,8 +1,8 @@
-# AWS Infrastructure Plan - Draft v0.1
+# AWS Infrastructure Plan
 
 This document defines the AWS infrastructure for the Financial Advisory Platform. It is adapted from a proven split-frontend/backend AWS architecture pattern and significantly enhanced for our requirements: multi-tenant isolation, event-driven processing, AI pipeline, communication ingestion, and SOC 2 / GLBA compliance from day 1.
 
-All infrastructure is provisioned using **Terraform (Infrastructure as Code)** from the start. With AI-assisted development tools (Claude Opus 4.6 and peers), authoring Terraform modules, scaffolding services, and building CI/CD pipelines is 10-100x faster than traditional methods. We should exploit this by investing in proper IaC and automation from day 1 rather than taking shortcuts that create technical debt.
+All infrastructure is provisioned using **Terraform (Infrastructure as Code)** from the start. AI-assisted development compresses weeks of Terraform authoring, service scaffolding, and CI/CD pipeline setup into days. We invest in proper IaC and automation from day 1 rather than taking shortcuts that create technical debt.
 
 ---
 
@@ -259,7 +259,7 @@ All infrastructure is provisioned using **Terraform (Infrastructure as Code)** f
 - **Serves:** White-label portal UI, onboarding flows, client dashboards, advisor workspace
 
 ### Core API Service
-- **Image:** `platform-core-api:latest` (Node.js or Python)
+- **Image:** `platform-core-api:latest` (Node.js / TypeScript)
 - **Subnet:** Private (behind Internal ALB)
 - **Task size:** 1 vCPU / 2 GB RAM
 - **Scaling:** min 1, max 4, target: 70% CPU
@@ -384,7 +384,7 @@ Code push (GitHub)
 | Repository | Image | Build trigger |
 |---|---|---|
 | `platform-frontend` | Next.js SSR app | Changes in `frontend/` |
-| `platform-core-api` | Node.js or Python API | Changes in `api/` |
+| `platform-core-api` | Node.js (TypeScript) API | Changes in `api/` |
 | `platform-ai-worker` | AI inference worker | Changes in `workers/ai/` |
 | `platform-comm-worker` | Communication processor | Changes in `workers/comm/` |
 | `platform-event-processor` | Event/signal processor | Changes in `workers/events/` |
@@ -528,7 +528,7 @@ terraform/
 
 **State management:** Terraform state stored in S3 with DynamoDB locking. Separate state file per environment. State bucket uses versioning and encryption.
 
-**AI-assisted development note:** With Claude Opus 4.6, generating and iterating on these Terraform modules is fast. The investment in proper module structure pays for itself immediately because the AI can work with well-structured modules much more effectively than with a monolithic configuration. Expect the full Terraform codebase for MVP to be authored in days, not weeks.
+**AI-assisted development note:** The investment in proper module structure pays for itself immediately — well-structured modules are faster to iterate on and extend. The full Terraform codebase for MVP can be authored in days, not weeks.
 
 ---
 

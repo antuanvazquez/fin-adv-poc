@@ -1,4 +1,4 @@
-# Competitive Analysis (Top 5 + Long Tail + AI Adjacencies) - Draft v0.3
+# Competitive Analysis (Top 5 + Long Tail + AI Adjacencies)
 
 ## Positioning lens
 Our product concept sits at the intersection of:
@@ -74,7 +74,7 @@ The practical wedge remains: **white-label, low-fee client portal that converts 
 - AI-powered tax document analysis. Scans tax returns and surfaces planning opportunities.
 - Gap: Tax-only. Does not cover insurance documents, general client questions, or cross-channel communication. Not a platform — a single-purpose analysis tool.
 
-### Key takeaway on AI adjacencies (UPDATED Feb 2026)
+### Key takeaway on AI adjacencies
 The landscape has shifted significantly since our initial analysis. The market is no longer "no one does this" — **multiple entrants are validating each individual piece** of our vision:
 - **Communication AI:** Zocks Email, Xylo AI
 - **Proactive signals:** Trove, Orion Denali, Xylo watchdog alerts
@@ -106,7 +106,7 @@ However, each remains a **point solution or enterprise-only offering**. No singl
 
 ## Differentiators that appear inconsistently available (opportunity)
 
-### Existing gaps (identified in v0.1, still valid)
+### Existing gaps
 - A true "prospect-to-client conversion engine" inside the portal (behavior scoring, upgrade prompts, segmentation)
 - End-to-end meeting workflow automation (agenda, notes, follow-ups, CRM sync) as a first-class citizen
 - Modern white-label packaging: per-advisor pricing, instant brand setup, domain mapping, templated journeys
@@ -121,7 +121,7 @@ However, each remains a **point solution or enterprise-only offering**. No singl
 
 ## Strategic implication
 Competing head-on with eMoney/MoneyGuide on planning depth remains slow and expensive. The faster path is:
-- Win with portal-driven acquisition + automation (same as v0.1)
-- Offer enough planning/reporting to be credible (same as v0.1)
-- Layer custodial data connectivity and AI-assisted ops over time (same as v0.1)
-- **UPDATED:** The living plan + communication hub + proactive signals combination is being validated by multiple entrants (Orion Denali, Zocks, Trove, Xylo, Jump), but no one has assembled the full loop for our target segment. This is still a category creation play for independent RIAs — but the window is closing. The incumbents are moving. We have a 12–18 month window where being first-to-integrate at an accessible price point is a meaningful advantage. After that, speed of execution is the moat, not the idea.
+- Win with portal-driven acquisition + automation
+- Offer enough planning/reporting to be credible
+- Layer custodial data connectivity and AI-assisted ops over time
+- The living plan + communication hub + proactive signals combination is being validated by multiple entrants (Orion Denali, Zocks, Trove, Xylo, Jump), but no one has assembled the end-to-end workflow for our target segment. The market is in an early adoption window that favors nimble teams like ours — our speed advantage is strongest in the next 12–18 months, and execution is the differentiator.

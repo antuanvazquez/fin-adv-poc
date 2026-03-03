@@ -1,4 +1,4 @@
-# Roadmap, Architecture Spikes, and Risk Register - Draft v0.2
+# Roadmap, Architecture Spikes, and Risk Register
 
 ## 1. Recommended build sequence (high level)
 

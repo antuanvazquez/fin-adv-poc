@@ -1,6 +1,6 @@
-# Technology Roadmap - Draft v0.1
+# Technology Roadmap
 
-This document covers the technical architecture, data systems, AI pipeline, and privacy infrastructure required to build the platform. It is separate from the business roadmap in `roadmap_and_risks.md`, which covers build phases, market strategy, and risk mitigations.
+This document covers the technical architecture, data systems, AI pipeline, and privacy infrastructure required to build the platform. It is separate from the Roadmap and Risk Register, which covers build phases, market strategy, and risk mitigations.
 
 ---
 
@@ -203,7 +203,7 @@ This document covers the technical architecture, data systems, AI pipeline, and 
 
 ## 6. Infrastructure and operations
 
-The full AWS infrastructure plan — including architecture diagrams, service definitions, security model, cost estimates, CI/CD pipeline, Terraform module structure, and phased enhancements — is documented in `infrastructure_plan.md`.
+The full AWS infrastructure plan — including architecture diagrams, service definitions, security model, cost estimates, CI/CD pipeline, Terraform module structure, and phased enhancements — is documented in the Infrastructure Plan.
 
 Key decisions already made:
 - **Cloud provider:** AWS (team familiarity, broadest compliance coverage, Bedrock for managed LLM access)
@@ -212,7 +212,7 @@ Key decisions already made:
 - **IaC:** Terraform with per-environment module composition
 - **CI/CD:** GitHub Actions with automated security scanning and deployment to ECS
 
-AI-assisted development (Claude Opus 4.6 and peers) makes Terraform authoring, service scaffolding, and CI/CD setup 10-100x faster. We invest in proper infrastructure automation from day 1.
+AI-assisted development compresses weeks of infrastructure setup into days. We invest in proper infrastructure automation from day 1.
 
 ### Multi-tenancy
 - Logical tenant isolation via `tenant_id` + PostgreSQL Row-Level Security (RLS) on all tables
@@ -238,7 +238,7 @@ AI-assisted development (Claude Opus 4.6 and peers) makes Terraform authoring, s
 
 ## 7. Technical decisions
 
-Decisions marked with **(decided)** are confirmed in `infrastructure_plan.md`. Decisions marked with **(evaluate)** require hands-on evaluation during Phase 0/1.
+Decisions marked with **(decided)** are confirmed in the Infrastructure Plan. Decisions marked with **(evaluate)** require hands-on evaluation during Phase 0/1.
 
 | Decision | Choice | Status | Notes |
 |---|---|---|---|

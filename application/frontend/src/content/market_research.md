@@ -98,7 +98,7 @@
 - AI tools are creating new problems: advisors spend **30+ minutes per document** editing AI-generated content for compliance — it's adding work, not removing it.
 - FINRA, SEC, and CFP Board now recommend starting with lower-risk AI applications (note-taking, marketing) before expanding.
 
-**What this means for us:** The "human-in-the-loop, advisor approval required" design stance documented in `requirements.md` is not just ethical — it is a **direct commercial differentiator** against tools perceived as compliance liabilities. Lead with it.
+**What this means for us:** The "human-in-the-loop, advisor approval required" design stance documented in the Requirements is not just ethical — it is a **direct commercial differentiator** against tools perceived as compliance liabilities. Lead with it.
 
 **Sources:**
 - [Financial Planning — AI Use Tops Advisor Compliance Headaches, 2025](https://www.financial-planning.com/news/ai-use-tops-advisor-compliance-headaches-for-first-time)
@@ -114,7 +114,7 @@
 - Alanna's active practice is the most important distribution asset — her daily use of the product is the proof point that opens doors.
 - XYPN (XY Planning Network) and NAPFA are the two most active communities for fee-only/RIA advisors and are known for vocal, honest tech feedback — these are direct-to-community distribution channels to prioritize.
 - Platform RIAs (Savvy Wealth, etc.) are aggregating small advisors and could become a channel partner rather than a competitor.
-- No social listening signal found of advisors actively seeking a "conversion-focused portal" by name — meaning demand may need to be created, not captured. This is a **Category Creation** challenge, not a Category Entry challenge.
+- No social listening signal found of advisors actively seeking a "conversion-focused portal" by name — meaning demand is emerging but not yet established. This is an **early-category opportunity** with multiple entrants validating the space, not a crowded market entry.
 
 **Sources:**
 - [RFG Advisory — Wirehouse Breakaways and RIA Trends 2026](https://rfgadvisory.com/news/shannon-spotswood-ria-trends-2026/)
@@ -169,4 +169,4 @@ The platform vision has expanded significantly beyond the initial scope analyzed
 
 ### Updated verdict
 
-**Still pursue. The expanded vision strengthens the case, not weakens it.** The competitive moat is dramatically deeper, the willingness-to-pay anchor ($5K/month) is justified by the full feature set, and the compliance challenges — while real — are addressable with proper planning (see `compliance_research.md`). The one condition remains the same: nail early distribution through Alanna's practice and targeted community outreach.
+**Still pursue. The expanded vision strengthens the case, not weakens it.** The competitive moat is dramatically deeper, the willingness-to-pay anchor ($5K/month) is justified by the full feature set, and the compliance challenges — while real — are addressable with proper planning (see the Compliance Research document). The one condition remains the same: nail early distribution through Alanna's practice and targeted community outreach.

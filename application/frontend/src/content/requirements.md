@@ -1,4 +1,4 @@
-# Financial Advisory SaaS (Advisor Enablement Platform) - Requirements (Draft v0.2)
+# Advisory Intelligence Platform — Requirements
 
 ## 1. Project intent
 
@@ -122,7 +122,7 @@ Key requirements:
   - conversion pipeline stages
 
 ### 5.4 Compliance-support features (High-value)
-- Immutable-ish logs for key events
+- Append-only audit logs for key events
 - Data retention controls and export for audits
 - Permissioning (RBAC): owner, advisor, assistant, compliance officer
 - Communications retention: all advisor-client messages (in-platform and ingested external) stored with timestamps and immutable audit trail

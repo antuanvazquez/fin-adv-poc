@@ -1,4 +1,4 @@
-# Compliance Research: Required Certifications and Regulatory Landscape - Draft v0.1
+# Compliance Research: Certifications and Regulatory Landscape
 
 **Prepared:** February 28, 2026
 

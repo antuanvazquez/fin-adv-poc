@@ -1,4 +1,4 @@
-# Background: Meeting with Financial Advisors (Alanna & Joe) - Notes (Draft v0.2)
+# Founding Team and Product Vision
 
 ## Founding partnership
 - **Antuan** — founding partner, serial entrepreneur with prior tech company founding experience. Builder-operator who covers the AI stack (agent design, evals, reliability), the trust stack (cloud security, SOC 2 readiness), and the data/integration layer that makes the product sticky. Pattern recognition from LegalTech and FinTech-adjacent regulated environments. Leads product, architecture, and technical build.
@@ -27,23 +27,19 @@ Target is primarily independent advisors (approx. 10 to 200 client households), 
 - Add "human-in-the-loop" upgrade: clients can find and engage a real advisor via a marketplace.
 - Concern: more competitive and harder trust/distribution problem vs B2B.
 
-## Current constraint noted
-- Relationships may be anchored inside large corporate firms, which can limit immediate leverage of network for early distribution unless they leave their roles.
-- Therefore, early traction may need to rely on:
-  - credibility and domain expertise
-  - product-led growth, content, partnerships, and outbound to independent advisors
+## Go-to-market approach
+The starting point is **advisor-first (B2B)**:
+- Clearer value proposition
+- Lower consumer trust burden
+- Strong foundation for iterative expansion
+- Option to add a marketplace layer once the advisor base exists
 
-## Main directional conclusion so far
-The safer starting point is **advisor-first (B2B)**:
-- clearer value proposition
-- lower consumer trust burden
-- better wedge for iterative expansion
-- option to add marketplace later once advisor base exists
+Early traction will rely on founder credibility, domain expertise, product-led growth, community outreach (XYPN, NAPFA), and targeted partnerships with independent advisors.
 
-## Technical/compliance threads raised
+## Technical and compliance considerations
 - Custodian integration is high-value and hard.
-- Security expectations: SOC 2 (often pursued via tools like Vanta/Drata) is a common baseline expectation.
-- As a SaaS vendor, we likely do not need to be "SEC/FINRA compliant" as registrants, but must deliver strong security and build compliance-support features that help advisors with their obligations.
+- Security expectations: SOC 2 is a baseline expectation for advisor-facing SaaS.
+- As a SaaS vendor, we do not need to be SEC/FINRA-registered ourselves, but must deliver strong security and build compliance-support features that help advisors meet their obligations.
 
 ## Pricing signal
 Alanna stated she would pay **at least $5,000/month** for a platform matching the vision discussed. This is significant context as a founding partner expressing confidence in the value of what we are building — and is consistent with market benchmarks (small-to-mid RIAs in the $100M–$2B AUM range spend $2,000–$12,500/month on tech per industry research).
@@ -57,4 +53,4 @@ The initial meeting focused on planning workflows and portals. Subsequent discus
 - **Continuous learning:** Advisors document answers and knowledge that the AI learns from over time. Clients who consent contribute anonymized data to a shared learning corpus that makes the platform smarter for everyone. Clients who do not consent are strictly excluded.
 - **Account connectivity:** Clients link their bank accounts, investment accounts, and other financial accounts directly through the platform, enabling ongoing data sharing rather than one-time intake.
 
-These capabilities are documented in detail in `requirements.md` (v0.2), `roadmap_and_risks.md` (v0.2), and `technology_roadmap.md`.
+These capabilities are documented in detail in the Requirements, Roadmap, and Technology Roadmap documents.
