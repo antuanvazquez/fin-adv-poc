@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Users, Bell, Calendar, Sparkles } from 'lucide-react';
+import { LayoutDashboard, Users, Bell, Calendar, Sparkles, ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -48,6 +48,15 @@ export function Sidebar() {
           );
         })}
       </nav>
+      <div className="px-3 pb-2">
+        <Link
+          href="/"
+          className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm text-[#4A5068] hover:text-[#8B8FA3] hover:bg-[#1E2A45]/30 transition-all duration-200 group"
+        >
+          <ArrowLeft className="w-[15px] h-[15px] group-hover:-translate-x-0.5 transition-transform duration-200" />
+          Back to Portal
+        </Link>
+      </div>
       <div className="p-4 border-t border-[#1E2A45]">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#C9A962]/20 to-[#C9A962]/5 flex items-center justify-center text-[#C9A962] text-sm font-semibold">

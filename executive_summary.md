@@ -16,14 +16,14 @@ No single platform combines all three capabilities — living financial plans, A
 
 ## Revenue Model
 
-Pricing is one of the decisions we'll make together. The table below uses **$20 per client, per month** as a starting point to illustrate the math — it's simple, scales naturally with practice size, and is easy for advisors to evaluate.
+Pricing is one of the decisions we'll make together. The table below uses **$25 per client, per month** as a starting point to illustrate the math — it's simple, scales naturally with practice size, and is easy for advisors to evaluate.
 
 | Firm Size | Clients | Monthly Fee | Annual Fee | Context |
 |---|---|---|---|---|
-| Small RIA | 50 | **$1,000/mo** | $12,000/yr | [RightCapital starts at $150/mo](https://www.rightcapital.com/pricing/) but no AI, no comm hub, no signals |
-| Mid RIA | 100 | **$2,000/mo** | $24,000/yr | Well within the [$2K–$3.75K/mo small RIA tech spend band](https://investipal.co/blog/7-technology-investments-financial-advisors-should-make-before-2026/) |
-| Larger RIA | 200 | **$4,000/mo** | $48,000/yr | Below the $6.25K–$12.5K/mo mid-size RIA benchmark |
-| Large practice | 300 | **$6,000/mo** | $72,000/yr | Consistent with what top practices spend on core platforms |
+| Small RIA | 50 | **$1,250/mo** | $15,000/yr | [RightCapital starts at $150/mo](https://www.rightcapital.com/pricing/) but no AI, no comm hub, no signals |
+| Mid RIA | 100 | **$2,500/mo** | $30,000/yr | Well within the [$2K–$3.75K/mo small RIA tech spend band](https://investipal.co/blog/7-technology-investments-financial-advisors-should-make-before-2026/) |
+| Larger RIA | 200 | **$5,000/mo** | $60,000/yr | Below the $6.25K–$12.5K/mo mid-size RIA benchmark |
+| Large practice | 300 | **$7,500/mo** | $90,000/yr | Consistent with what top practices spend on core platforms |
 
 A platform minimum (~$500/month) would ensure we cover AI compute costs for smaller firms.
 
@@ -35,9 +35,9 @@ A platform minimum (~$500/month) would ensure we cover AI compute costs for smal
 
 We'll also need to consider multi-firm advisors, team accounts, and volume discounts as we learn more from early customers. The right model will become clearer once we're in market.
 
-### Why the economics work at $20/client
+### Why the economics work at $25/client
 
-Advisors generate [$5,000–$15,000+ in annual revenue per client](https://www.aboutschwab.com/ria-benchmarking-study-2025) (based on typical [1% AUM fee models](https://www.kitces.com/blog/financial-advisors-charge-services-fees-fee-structure-advisory-firm-profession-aum-pricing-insight/)). At $20/client/month, our platform costs $240/client/year — roughly 2–5% of what each client generates. The ROI is clear: faster meeting prep ([4.6 hours saved per annual review](https://advisoryai.com/blog/scaling-client-service-without-hiring-a-field-guide-for-uk-advisory-firms)), proactive retention, and capacity to [serve 20–40% more clients without hiring](https://advisoryai.com/blog/scaling-client-service-without-hiring-a-field-guide-for-uk-advisory-firms). Any of the pricing models above would land in a similar range relative to advisor revenue.
+Advisors generate [$5,000–$15,000+ in annual revenue per client](https://www.aboutschwab.com/ria-benchmarking-study-2025) (based on typical [1% AUM fee models](https://www.kitces.com/blog/financial-advisors-charge-services-fees-fee-structure-advisory-firm-profession-aum-pricing-insight/)). At $25/client/month, our platform costs $300/client/year — roughly 2–6% of what each client generates. The ROI is clear: faster meeting prep ([4.6 hours saved per annual review](https://advisoryai.com/blog/scaling-client-service-without-hiring-a-field-guide-for-uk-advisory-firms)), proactive retention, and capacity to [serve 20–40% more clients without hiring](https://advisoryai.com/blog/scaling-client-service-without-hiring-a-field-guide-for-uk-advisory-firms). Any of the pricing models above would land in a similar range relative to advisor revenue.
 
 ---
 
@@ -119,7 +119,7 @@ Credits only offset AWS usage (infrastructure, Bedrock AI calls, S3, etc.) — t
 
 ### Growth assumptions
 
-*The projections below use the $20/client model as a baseline. The actual numbers will shift depending on which pricing model we choose — but the trajectory and break-even dynamics are similar across all models at comparable price points.*
+*The projections below use $25/client as a baseline. The actual numbers will shift depending on which pricing model we choose — but the trajectory and break-even dynamics are similar across all models at comparable price points.*
 
 - MVP live by end of Month 4; first paying customer(s) target Month 5 (founder-led sales; Alanna's practice validates the product at launch)
 - Joe's referrals bring 2–3 advisors in months 6–7 (founder-led sales — no sales team needed yet)
@@ -130,24 +130,40 @@ Credits only offset AWS usage (infrastructure, Bedrock AI calls, S3, etc.) — t
 |---|---|---|---|---|---|---|
 | 1 | 0 | 0 | $0 | ~$3,100 | –$3,100 | –$3,100 |
 | 2–4 | 0 | 0 | $0 | ~$7,900/mo | –$23,700 | –$26,800 |
-| 5 | 1 | 260 | $5,200 | ~$16,000 | –$10,800 | –$37,600 |
-| 6 | 3 | 560 | $11,200 | ~$16,000 | –$4,800 | –$42,400 |
-| 7 | 5 | 860 | $17,200 | ~$16,000 | +$1,200 | –$41,200 |
-| 8 | 7 | 1,060 | $21,200 | ~$16,500 | +$4,700 | –$36,500 |
-| 9 | 9 | 1,260 | $25,200 | ~$16,500 | +$8,700 | –$27,800 |
-| 10 | 11 | 1,460 | $29,200 | ~$17,000 | +$12,200 | –$15,600 |
-| 11 | 13 | 1,660 | $33,200 | ~$17,000 | +$16,200 | +$600 |
-| **12** | **15** | **1,960** | **$39,200** | ~$17,500 | **+$21,700** | **+$22,300** |
+| 5 | 1 | 260 | $6,500 | ~$16,000 | –$9,500 | –$36,300 |
+| 6 | 3 | 560 | $14,000 | ~$16,000 | –$2,000 | –$38,300 |
+| 7 | 5 | 860 | $21,500 | ~$16,000 | +$5,500 | –$32,800 |
+| 8 | 7 | 1,060 | $26,500 | ~$16,500 | +$10,000 | –$22,800 |
+| 9 | 9 | 1,260 | $31,500 | ~$16,500 | +$15,000 | –$7,800 |
+| 10 | 11 | 1,460 | $36,500 | ~$17,000 | +$19,500 | +$11,700 |
+| 11 | 13 | 1,660 | $41,500 | ~$17,000 | +$24,500 | +$36,200 |
+| **12** | **15** | **1,960** | **$49,000** | ~$17,500 | **+$31,500** | **+$67,700** |
 
 **Break-even: Month 7** (MRR exceeds monthly operating costs)
 
-**Fully self-funded: Month 11** (cumulative revenue has repaid all invested cash)
+**Fully self-funded: Month 10** (cumulative revenue has repaid all invested cash)
 
-**Year 1 total revenue: ~$170,000** (months 5–12)
-
-**Year 2 projection (if growth continues):** 30–50 advisors, 3,000–6,000 clients, $60K–$120K MRR, **$720K–$1.44M ARR**
+**Year 1 total revenue: ~$227,000** (months 5–12)
 
 *Note: Monthly burn includes contract engineer and marketing but excludes Antuan's engineering (negotiable). Phase 1 burn includes SOC 2 ($15K). AWS credits reduce actual cash outflow further — see Cloud Credits table.*
+
+### Growth Potential
+
+The Year 1 projections above are conservative — 15 advisors by month 12 with a 100-client average. With dedicated marketing and founder-led sales, reaching well beyond that by year 2 is realistic (the entire addressable market is 32,000+ firms).
+
+Industry data ([Kitces](https://www.kitces.com/blog/the-solo-independent-ria-financial-advisor-is-not-just-surviving-but-thriving-by-serving-the-mass-affluent/), [FA Insight](https://fainsight.com/)) shows solo advisors typically serve 75–150 clients, while small ensemble firms serve 150–300. As we onboard more firms, the mix skews toward smaller practices, bringing the average down.
+
+| Year 2 Scenario | Advisors | Avg Clients/Firm | MRR/Firm | ARR | Valuation (10–15x ARR) |
+|---|---|---|---|---|---|
+| Conservative | 75 | 120 | $3,000 | $2.7M | $27M–$41M |
+| Base case | 200 | 100 | $2,500 | $6.0M | $60M–$90M |
+| Aggressive | 500 | 85 | $2,125 | $12.8M | $128M–$191M |
+
+### The path to $1B
+
+A $1B valuation requires roughly $65M–$80M in ARR at a 12–15x multiple. At $25/client, that translates to approximately **3,000–3,500 advisor firms** averaging 75–80 clients each — about 10% of the addressable market. For context, Orion (a comparable advisor-tech platform) surpassed $2B in valuation by reaching a similar share of the RIA market. The path would likely involve venture funding to accelerate sales and marketing, but the unit economics and market dynamics support it.
+
+Valuation multiples reflect typical early-stage vertical SaaS in fintech (comparable companies: Orion, Nitrogen/Riskalyze, Addepar). The key lever is average practice size — selling into mid-size firms with 150+ clients is significantly more valuable per sale than volume alone.
 
 ---
 
@@ -160,16 +176,16 @@ Credits only offset AWS usage (infrastructure, Bedrock AI calls, S3, etc.) — t
 | Phase 2 (growth — after $25K credit) | ~$103,600 | Months 5–12 |
 | **Gross cash needed (excl. Antuan eng)** | **~$133,400–$136,900** | Over 12 months |
 | Additional AWS credits possible | up to –$75,000 more | If full NVIDIA Inception or VC-backed credits secured |
-| Revenue generated (months 5–12) | –$170,000 | |
+| Revenue generated (months 5–12) | –$227,000 | |
 
 ### Risk-adjusted scenarios
 
 | Scenario | Assumption | Peak cash outlay (before revenue covers costs) | Self-funded by |
 |---|---|---|---|
-| **Optimistic** | Founder network delivers fast; 15+ advisors by month 12; full credits secured | ~$35,000 | Month 9 |
-| **Base case** | 12 advisors by month 12; $26K in credits | ~$45,000 | Month 11 |
-| **Conservative** | 50% slower acquisition; 6 advisors by month 12 | ~$75,000 | Month 15 |
-| **Worst case** | Single early customer for 6 months; very slow growth | ~$110,000 | Month 18+ |
+| **Optimistic** | Founder network delivers fast; 15+ advisors by month 12; full credits secured | ~$30,000 | Month 8 |
+| **Base case** | 12 advisors by month 12; $26K in credits | ~$40,000 | Month 10 |
+| **Conservative** | 50% slower acquisition; 6 advisors by month 12 | ~$65,000 | Month 14 |
+| **Worst case** | Single early customer for 6 months; very slow growth | ~$100,000 | Month 17+ |
 
 Even in the worst case, the investment is modest relative to the revenue opportunity. The faster we acquire customers, the less total cash is needed — founder-led distribution through Alanna and Joe's network is the key lever.
 
@@ -177,7 +193,7 @@ Even in the worst case, the investment is modest relative to the revenue opportu
 
 ## Why This Works
 
-**Built-in product validation.** Alanna's active practice gives us real-time industry feedback from day one — we build with a live advisor lens, not in a vacuum. Her stated willingness to pay ($5,000+/mo) anchors our pricing confidence.
+**Built-in product validation.** Alanna's active practice gives us real-time industry feedback from day one — we build with a live advisor lens, not in a vacuum. Her stated willingness to pay ($5,000+/mo) validates the $25/client price point from day one.
 
 **AI makes us fast.** AI-assisted development dramatically accelerates the build timeline. A functional POC can be live within days; a production MVP within weeks. Monthly burn stays low even as we scale.
 

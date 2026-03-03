@@ -21,21 +21,20 @@ const cards = [
     accent: true,
   },
   {
-    title: 'Detailed Documents',
+    title: 'Watch Intro Video',
+    description:
+      'A quick walkthrough of the platform vision and what the POC demonstrates.',
+    icon: Play,
+    href: '/video',
+    accent: false,
+  },
+  {
+    title: 'Supporting Documents',
     description:
       'Market research, competitive analysis, compliance, technology roadmap, and more.',
     icon: FolderOpen,
     href: '/docs',
     accent: false,
-  },
-  {
-    title: 'Watch Intro Video',
-    description:
-      'A quick walkthrough of the platform vision and what the POC demonstrates.',
-    icon: Play,
-    href: '#',
-    accent: false,
-    comingSoon: true,
   },
   {
     title: 'Explore the POC',
@@ -44,6 +43,7 @@ const cards = [
     icon: LayoutDashboard,
     href: '/dashboard',
     accent: true,
+    featured: true,
   },
 ];
 
@@ -92,13 +92,25 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 * i }}
             >
-              {card.comingSoon ? (
-                <div className="group relative rounded-2xl border border-[#1E2A45] bg-[#0D1424]/80 p-5 sm:p-6 h-full flex flex-col justify-between opacity-50 cursor-default">
-                  <CardContent card={card} />
-                  <span className="absolute top-3 right-3 sm:top-4 sm:right-4 text-[10px] uppercase tracking-widest text-[#4A5068] font-semibold">
-                    Coming soon
-                  </span>
-                </div>
+              {card.featured ? (
+                <Link href={card.href} className="block h-full">
+                  <motion.div
+                    animate={{
+                      boxShadow: [
+                        '0 0 0px rgba(201,169,98,0)',
+                        '0 0 24px rgba(201,169,98,0.18)',
+                        '0 0 0px rgba(201,169,98,0)',
+                      ],
+                    }}
+                    transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                    className="group relative rounded-2xl border border-[#C9A962]/50 bg-gradient-to-br from-[#C9A962]/8 via-[#0D1424]/90 to-[#0D1424]/80 p-5 sm:p-6 h-full flex flex-col justify-between transition-all duration-300 active:scale-[0.98] sm:hover:scale-[1.02] sm:hover:border-[#C9A962]/70"
+                  >
+                    <span className="absolute top-3 right-3 sm:top-4 sm:right-4 text-[10px] uppercase tracking-widest text-[#C9A962]/70 font-semibold">
+                      Try it
+                    </span>
+                    <CardContent card={card} />
+                  </motion.div>
+                </Link>
               ) : (
                 <Link href={card.href} className="block h-full">
                   <div
@@ -145,11 +157,9 @@ function CardContent({ card }: { card: (typeof cards)[number] }) {
           {card.description}
         </p>
       </div>
-      {!card.comingSoon && (
-        <div className="flex items-center gap-1 text-xs text-[#C9A962] mt-3 sm:mt-4 font-medium group-hover:gap-2 transition-all">
-          Open <ArrowRight className="w-3 h-3" />
-        </div>
-      )}
+      <div className="flex items-center gap-1 text-xs text-[#C9A962] mt-3 sm:mt-4 font-medium group-hover:gap-2 transition-all">
+        Open <ArrowRight className="w-3 h-3" />
+      </div>
     </>
   );
 }

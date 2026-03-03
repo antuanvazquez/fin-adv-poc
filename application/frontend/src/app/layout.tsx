@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { AnalyticsTracker } from "@/components/analytics-tracker";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.variable} font-sans bg-[#0A0F1C] text-[#F0F0F5] antialiased min-h-screen`}>
         <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,169,98,0.03)_0%,_transparent_50%)] pointer-events-none" />
         <div className="relative z-10">{children}</div>
+        <AnalyticsTracker />
       </body>
     </html>
   );

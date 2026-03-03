@@ -12,6 +12,7 @@
     "@anthropic-ai/sdk": "^0.78.0",
     "@react-pdf/renderer": "^4.3.2",
     "@tailwindcss/typography": "^0.5.19",
+    "@vercel/blob": "^2.3.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.3",
     "lucide-react": "^0.575.0",
