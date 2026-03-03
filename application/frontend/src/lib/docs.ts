@@ -98,9 +98,9 @@ export async function renderMarkdown(filename: string): Promise<string> {
 
   html = html.replace(
     /<table>/g,
-    '<div class="table-wrap"><table>',
+    '<div class="table-outer"><div class="table-wrap"><table>',
   );
-  html = html.replace(/<\/table>/g, '</table></div>');
+  html = html.replace(/<\/table>/g, '</table></div></div>');
 
   return html;
 }
