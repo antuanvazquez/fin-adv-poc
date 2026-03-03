@@ -224,14 +224,15 @@ export default function VideoPage() {
 
           {/* Controls overlay — z-20 to sit above the tap area */}
           <div
-            className={`absolute inset-x-0 bottom-0 z-20 transition-opacity duration-300 ${
+            className={`absolute inset-x-0 bottom-0 z-20 flex flex-col justify-end transition-opacity duration-300 ${
               showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'
             }`}
           >
-            <div className="h-28 sm:h-36 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+            {/* Gradient scrim — sits behind controls */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/95 via-black/50 to-transparent pointer-events-none" />
 
-            <div className="absolute inset-x-0 bottom-0 px-3 sm:px-5 pb-3 sm:pb-4 space-y-2.5">
-              {/* Progress bar — larger touch target */}
+            <div className="relative px-3 sm:px-5 pb-2 sm:pb-3 space-y-1.5">
+              {/* Progress bar */}
               <div
                 ref={progressRef}
                 className="w-full py-2 cursor-pointer"
@@ -251,15 +252,9 @@ export default function VideoPage() {
                 </div>
               </div>
 
-              {/* Time row */}
-              <div className="flex items-center justify-between text-[11px] sm:text-xs text-white/50 tabular-nums px-0.5">
-                <span>{fmtTime(adjustedCurrent)}</span>
-                <span>{fmtTime(adjustedRemaining)} left</span>
-              </div>
-
-              {/* Controls row */}
+              {/* Controls row + time */}
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-0.5">
                   <button
                     onClick={(e) => { e.stopPropagation(); togglePlay(); scheduleHide(); }}
                     className="w-10 h-10 flex items-center justify-center text-white active:scale-90 transition-transform"
@@ -269,17 +264,21 @@ export default function VideoPage() {
 
                   <button
                     onClick={(e) => { e.stopPropagation(); restart(); }}
-                    className="w-10 h-10 flex items-center justify-center text-white/50 active:text-white transition-colors"
+                    className="w-9 h-10 flex items-center justify-center text-white/50 active:text-white transition-colors"
                   >
                     <RotateCcw className="w-4 h-4" />
                   </button>
 
                   <button
                     onClick={(e) => { e.stopPropagation(); toggleMute(); }}
-                    className="w-10 h-10 flex items-center justify-center text-white/50 active:text-white transition-colors"
+                    className="w-9 h-10 flex items-center justify-center text-white/50 active:text-white transition-colors"
                   >
                     {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
                   </button>
+
+                  <span className="text-[10px] sm:text-xs text-white/40 tabular-nums ml-1">
+                    {fmtTime(adjustedCurrent)} / {fmtTime(adjustedDuration)}
+                  </span>
                 </div>
 
                 <div className="flex items-center gap-1">
@@ -316,9 +315,11 @@ export default function VideoPage() {
 
                   <button
                     onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
-                    className="w-10 h-10 flex items-center justify-center text-white/50 active:text-white transition-colors"
+                    className="h-8 px-2.5 rounded-lg bg-white/10 flex items-center gap-1.5 text-xs font-semibold text-white/80 active:bg-white/20 transition-colors"
                   >
-                    {isFs ? <Minimize className="w-4 h-4" /> : <Maximize className="w-4 h-4" />}
+                    {isFs ? <Minimize className="w-3.5 h-3.5" /> : <Maximize className="w-3.5 h-3.5" />}
+                    <span className="hidden sm:inline">{isFs ? 'Exit' : 'Full Screen'}</span>
+                    <span className="sm:hidden">{isFs ? 'Exit' : 'Full'}</span>
                   </button>
                 </div>
               </div>

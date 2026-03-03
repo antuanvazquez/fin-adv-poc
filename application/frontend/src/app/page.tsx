@@ -29,14 +29,6 @@ const cards = [
     accent: true,
   },
   {
-    title: 'Supporting Documents',
-    description:
-      'Market research, competitive analysis, compliance, technology roadmap, and more.',
-    icon: FolderOpen,
-    href: '/docs',
-    accent: false,
-  },
-  {
     title: 'Explore the POC',
     description:
       'See the platform in action — AI-powered planning, communication hub, life signals, and more.',
@@ -44,6 +36,14 @@ const cards = [
     href: '/dashboard',
     accent: true,
     featured: true,
+  },
+  {
+    title: 'Supporting Documents',
+    description:
+      'Market research, competitive analysis, compliance, technology roadmap, and more.',
+    icon: FolderOpen,
+    href: '/docs',
+    accent: false,
   },
 ];
 
