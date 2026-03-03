@@ -349,9 +349,9 @@ export default function VideoPage() {
 
         {/* Fullscreen tip — mobile only */}
         {showFsTip && (
-          <div className="sm:hidden flex items-start justify-end mt-3 animate-pulse" style={{ paddingRight: '0.35rem' }}>
+          <div className="sm:hidden flex items-start justify-end mt-3 animate-pulse" style={{ paddingRight: '0.2rem' }}>
             <div className="flex flex-col items-end gap-0.5">
-              <span className="text-[#C9A962] text-xl leading-none">↑</span>
+              <span className="text-[#C9A962] text-xl leading-none" style={{ marginRight: '-0.1rem' }}>↗</span>
               <p className="text-xs text-[#C9A962] font-medium text-right leading-snug max-w-[200px]">
                 Tap <strong>Full</strong> and turn your phone sideways for the best experience
               </p>
