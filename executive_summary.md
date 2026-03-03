@@ -16,18 +16,28 @@ No single platform combines all three capabilities — living financial plans, A
 
 ## Revenue Model
 
-### Pricing: $20 per client, per month (billed to the RIA firm)
+Pricing is one of the decisions we'll make together. The table below uses **$20 per client, per month** as a starting point to illustrate the math — it's simple, scales naturally with practice size, and is easy for advisors to evaluate.
 
-| Firm Size | Clients | Monthly Fee | Annual Fee | Comparison |
+| Firm Size | Clients | Monthly Fee | Annual Fee | Context |
 |---|---|---|---|---|
 | Small RIA | 50 | **$1,000/mo** | $12,000/yr | [RightCapital starts at $150/mo](https://www.rightcapital.com/pricing/) but no AI, no comm hub, no signals |
-| Mid RIA | 100 | **$2,000/mo** | $24,000/yr | Well within the $2K–$3.75K/mo small RIA tech spend band |
-| Large practice | 260 | **$5,200/mo** | $62,400/yr | Alanna has stated willingness to pay at this level |
-| Large RIA | 200 | **$4,000/mo** | $48,000/yr | Below the $6.25K–$12.5K/mo mid-size RIA benchmark |
+| Mid RIA | 100 | **$2,000/mo** | $24,000/yr | Well within the [$2K–$3.75K/mo small RIA tech spend band](https://investipal.co/blog/7-technology-investments-financial-advisors-should-make-before-2026/) |
+| Larger RIA | 200 | **$4,000/mo** | $48,000/yr | Below the $6.25K–$12.5K/mo mid-size RIA benchmark |
+| Large practice | 300 | **$6,000/mo** | $72,000/yr | Consistent with what top practices spend on core platforms |
 
-**Platform minimum: $500/month** (ensures we cover AI compute costs for smaller firms)
+A platform minimum (~$500/month) would ensure we cover AI compute costs for smaller firms.
 
-**Why $20/client works:** These advisors generate [$5,000–$15,000+ in annual revenue per client](https://www.aboutschwab.com/ria-benchmarking-study-2025) (based on typical [1% AUM fee models](https://www.kitces.com/blog/financial-advisors-charge-services-fees-fee-structure-advisory-firm-profession-aum-pricing-insight/) applied to median client account sizes). Our platform costs them $240/client/year — roughly 2–5% of what each client generates. The ROI is obvious: faster meeting prep ([4.6 hours saved per annual review](https://advisoryai.com/blog/scaling-client-service-without-hiring-a-field-guide-for-uk-advisory-firms)), proactive retention (clients don't leave advisors who anticipate their needs), and capacity expansion ([serve 20–40% more clients without hiring](https://advisoryai.com/blog/scaling-client-service-without-hiring-a-field-guide-for-uk-advisory-firms)).
+### Other pricing models worth exploring
+
+- **AUM-based fee** — a small basis point charge on total assets under management per client, aligning our pricing with how advisors already think about costs
+- **Flat tier by total AUM** — e.g., $1,500/mo for firms under $250M AUM, $3,000/mo for $250M–$1B, scaling from there
+- **Hybrid** — base platform fee + per-client usage, giving smaller firms a lower entry point
+
+We'll also need to consider multi-firm advisors, team accounts, and volume discounts as we learn more from early customers. The right model will become clearer once we're in market.
+
+### Why the economics work at $20/client
+
+Advisors generate [$5,000–$15,000+ in annual revenue per client](https://www.aboutschwab.com/ria-benchmarking-study-2025) (based on typical [1% AUM fee models](https://www.kitces.com/blog/financial-advisors-charge-services-fees-fee-structure-advisory-firm-profession-aum-pricing-insight/)). At $20/client/month, our platform costs $240/client/year — roughly 2–5% of what each client generates. The ROI is clear: faster meeting prep ([4.6 hours saved per annual review](https://advisoryai.com/blog/scaling-client-service-without-hiring-a-field-guide-for-uk-advisory-firms)), proactive retention, and capacity to [serve 20–40% more clients without hiring](https://advisoryai.com/blog/scaling-client-service-without-hiring-a-field-guide-for-uk-advisory-firms). Any of the pricing models above would land in a similar range relative to advisor revenue.
 
 ---
 
@@ -108,10 +118,13 @@ Credits only offset AWS usage (infrastructure, Bedrock AI calls, S3, etc.) — t
 ## Revenue Projection & Break-Even
 
 ### Growth assumptions
+
+*The projections below use the $20/client model as a baseline. The actual numbers will shift depending on which pricing model we choose — but the trajectory and break-even dynamics are similar across all models at comparable price points.*
+
 - MVP live by end of Month 4; first paying customer(s) target Month 5 (founder-led sales; Alanna's practice validates the product at launch)
 - Joe's referrals bring 2–3 advisors in months 6–7 (founder-led sales — no sales team needed yet)
 - Marketing pipeline contributes 1–2 new advisors per month starting month 8
-- Average firm size: 100 clients
+- Average firm size: 100 clients (Month 5 uses Alanna's practice at 260 clients as the anchor customer)
 
 | Month | Advisors | Clients | MRR | Monthly Burn | Net Cash Flow | Cumulative |
 |---|---|---|---|---|---|---|

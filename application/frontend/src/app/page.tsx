@@ -81,7 +81,7 @@ export default function Home() {
           Executive Summary or the intro video for the big picture. The
           supporting documents are deeper dives into the research and analysis
           behind it. The Proof of Concept (POC) is an early, working prototype
-          of what the platform will look and feel like.
+          for us to tweak and begin to get a sense of what the platform should look and feel like.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-8 sm:mt-10 w-full">
