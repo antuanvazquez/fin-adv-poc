@@ -1,9 +1,9 @@
 # Background: Meeting with Financial Advisors (Alanna & Joe) - Notes (Draft v0.2)
 
 ## Founding partnership
-- **Antuan** — founding partner, serial entrepreneur with tech company founding experience. Leads product and technical build.
+- **Antuan** — founding partner, serial entrepreneur with prior tech company founding experience. Builder-operator who covers the AI stack (agent design, evals, reliability), the trust stack (cloud security, SOC 2 readiness), and the data/integration layer that makes the product sticky. Pattern recognition from LegalTech and FinTech-adjacent regulated environments. Leads product, architecture, and technical build.
 - **Alanna** — founding partner, active financial advisor. Relatively early in career but highly experienced and top-tier. Her active practice brings real-time industry insight and serves as built-in product validation — we build with a live advisor lens from day one, as if we had a customer onboard to shape the product.
-- **Joe** — founding partner, retired financial advisor. Brings extensive industry experience, institutional knowledge, relationships, and credibility.
+- **Joe** — founding partner, retired financial advisor. Outstanding sales expertise and a proven ability to open doors. Brings extensive industry experience, institutional knowledge, relationships, and credibility.
 
 ## High-level outcome
 The three partners are building a **Financial Advisory SaaS** together.

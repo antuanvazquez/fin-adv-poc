@@ -14,21 +14,24 @@ import Link from 'next/link';
 const cards = [
   {
     title: 'Executive Summary',
-    description: 'The opportunity, revenue model, cost roadmap, and investment overview — all in one page.',
+    description:
+      'The opportunity, revenue model, cost roadmap, and investment overview.',
     icon: FileText,
     href: '/docs/executive-summary',
     accent: true,
   },
   {
     title: 'Detailed Documents',
-    description: 'Market research, competitive analysis, compliance, technology roadmap, and more.',
+    description:
+      'Market research, competitive analysis, compliance, technology roadmap, and more.',
     icon: FolderOpen,
     href: '/docs',
     accent: false,
   },
   {
     title: 'Watch Intro Video',
-    description: 'A quick walkthrough of the platform vision and what the POC demonstrates.',
+    description:
+      'A quick walkthrough of the platform vision and what the POC demonstrates.',
     icon: Play,
     href: '#',
     accent: false,
@@ -36,7 +39,8 @@ const cards = [
   },
   {
     title: 'Explore the POC',
-    description: 'See the platform in action — AI-powered planning, communication hub, life signals, and more.',
+    description:
+      'See the platform in action — AI-powered planning, communication hub, life signals, and more.',
     icon: LayoutDashboard,
     href: '/dashboard',
     accent: true,
@@ -45,7 +49,7 @@ const cards = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-16">
+    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-12 sm:py-16">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,169,98,0.06)_0%,_transparent_60%)]" />
 
       <motion.div
@@ -63,21 +67,21 @@ export default function Home() {
             ],
           }}
           transition={{ duration: 3, repeat: Infinity }}
-          className="w-16 h-16 rounded-2xl bg-[#131A2E] border border-[#C9A962]/20 flex items-center justify-center mb-6"
+          className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#131A2E] border border-[#C9A962]/20 flex items-center justify-center mb-5 sm:mb-6"
         >
-          <Sparkles className="w-8 h-8 text-[#C9A962]" />
+          <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 text-[#C9A962]" />
         </motion.div>
 
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center leading-tight">
           Financial Advisory{' '}
           <span className="text-[#C9A962]">Intelligence Platform</span>
         </h1>
-        <p className="text-[#8B8FA3] mt-3 text-base md:text-lg text-center max-w-xl">
+        <p className="text-[#8B8FA3] mt-3 text-sm sm:text-base md:text-lg text-center max-w-xl px-2">
           Welcome, partners. Everything you need to evaluate the opportunity is
           here — the business case, the research, and a working proof of concept.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-8 sm:mt-10 w-full">
           {cards.map((card, i) => (
             <motion.div
               key={card.title}
@@ -86,16 +90,16 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.15 * i }}
             >
               {card.comingSoon ? (
-                <div className="group relative rounded-2xl border border-[#1E2A45] bg-[#0D1424]/80 p-6 h-full flex flex-col justify-between opacity-50 cursor-default">
+                <div className="group relative rounded-2xl border border-[#1E2A45] bg-[#0D1424]/80 p-5 sm:p-6 h-full flex flex-col justify-between opacity-50 cursor-default">
                   <CardContent card={card} />
-                  <span className="absolute top-4 right-4 text-[10px] uppercase tracking-widest text-[#4A5068] font-semibold">
+                  <span className="absolute top-3 right-3 sm:top-4 sm:right-4 text-[10px] uppercase tracking-widest text-[#4A5068] font-semibold">
                     Coming soon
                   </span>
                 </div>
               ) : (
                 <Link href={card.href} className="block h-full">
                   <div
-                    className={`group relative rounded-2xl border p-6 h-full flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] ${
+                    className={`group relative rounded-2xl border p-5 sm:p-6 h-full flex flex-col justify-between transition-all duration-300 active:scale-[0.98] sm:hover:scale-[1.02] ${
                       card.accent
                         ? 'border-[#C9A962]/30 bg-gradient-to-br from-[#C9A962]/5 to-[#0D1424]/80 hover:border-[#C9A962]/50'
                         : 'border-[#1E2A45] bg-[#0D1424]/80 hover:border-[#2A3A5C]'
@@ -109,7 +113,7 @@ export default function Home() {
           ))}
         </div>
 
-        <p className="text-xs text-[#4A5068] mt-10 text-center">
+        <p className="text-xs text-[#4A5068] mt-8 sm:mt-10 text-center">
           Confidential — Partner Preview Only
         </p>
       </motion.div>
@@ -117,25 +121,21 @@ export default function Home() {
   );
 }
 
-function CardContent({
-  card,
-}: {
-  card: (typeof cards)[number];
-}) {
+function CardContent({ card }: { card: (typeof cards)[number] }) {
   const Icon = card.icon;
   return (
     <>
       <div>
         <div
-          className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${
+          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center mb-3 sm:mb-4 ${
             card.accent
               ? 'bg-[#C9A962]/10 text-[#C9A962]'
               : 'bg-[#131A2E] text-[#8B8FA3]'
           }`}
         >
-          <Icon className="w-5 h-5" />
+          <Icon className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
         </div>
-        <h3 className="text-lg font-semibold text-[#F0F0F5] mb-1">
+        <h3 className="text-base sm:text-lg font-semibold text-[#F0F0F5] mb-1">
           {card.title}
         </h3>
         <p className="text-sm text-[#8B8FA3] leading-relaxed">
@@ -143,7 +143,7 @@ function CardContent({
         </p>
       </div>
       {!card.comingSoon && (
-        <div className="flex items-center gap-1 text-xs text-[#C9A962] mt-4 font-medium group-hover:gap-2 transition-all">
+        <div className="flex items-center gap-1 text-xs text-[#C9A962] mt-3 sm:mt-4 font-medium group-hover:gap-2 transition-all">
           Open <ArrowRight className="w-3 h-3" />
         </div>
       )}

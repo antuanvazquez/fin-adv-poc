@@ -89,7 +89,18 @@ export async function renderMarkdown(filename: string): Promise<string> {
   const filePath = path.join(CONTENT_DIR, filename);
   const raw = fs.readFileSync(filePath, 'utf-8');
 
-  const result = await remark().use(remarkGfm).use(remarkHtml).process(raw);
+  const result = await remark()
+    .use(remarkGfm)
+    .use(remarkHtml, { sanitize: false })
+    .process(raw);
 
-  return result.toString();
+  let html = result.toString();
+
+  html = html.replace(
+    /<table>/g,
+    '<div class="table-wrap"><table>',
+  );
+  html = html.replace(/<\/table>/g, '</table></div>');
+
+  return html;
 }
