@@ -13,20 +13,20 @@ import Link from 'next/link';
 
 const cards = [
   {
+    title: 'Start Here',
+    description:
+      'A quick walkthrough of the platform vision and what the POC demonstrates.',
+    icon: Play,
+    href: '/video',
+    accent: true,
+  },
+  {
     title: 'Executive Summary',
     description:
       'The opportunity, revenue model, cost roadmap, and investment overview.',
     icon: FileText,
     href: '/docs/executive-summary',
     accent: true,
-  },
-  {
-    title: 'Watch Intro Video',
-    description:
-      'A quick walkthrough of the platform vision and what the POC demonstrates.',
-    icon: Play,
-    href: '/video',
-    accent: false,
   },
   {
     title: 'Supporting Documents',
