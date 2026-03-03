@@ -1,6 +1,8 @@
-import { put, head, list } from '@vercel/blob';
+import { put, list } from '@vercel/blob';
 
-const BLOB_PATH = 'analytics/events.json';
+// Each event is stored as its own blob: analytics/events/<timestamp>-<random>.json
+// This is fully append-only — no read-modify-write, no race conditions.
+const EVENT_PREFIX = 'analytics/events/';
 
 export interface PageEvent {
   event_type: string;
@@ -17,60 +19,97 @@ export interface PageEvent {
   created_at: string;
 }
 
-async function readEvents(): Promise<PageEvent[]> {
-  try {
-    const blobs = await list({ prefix: 'analytics/' });
-    const match = blobs.blobs.find((b) => b.pathname === BLOB_PATH);
-    if (!match) return [];
-    const res = await fetch(match.url);
-    if (!res.ok) return [];
-    return await res.json();
-  } catch {
-    return [];
-  }
-}
-
-async function writeEvents(events: PageEvent[]) {
-  await put(BLOB_PATH, JSON.stringify(events), {
+// Write a single event as its own file
+export async function insertEvent(event: PageEvent) {
+  const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  await put(`${EVENT_PREFIX}${id}.json`, JSON.stringify(event), {
     access: 'public',
     addRandomSuffix: false,
   });
 }
 
-export async function insertEvent(event: PageEvent) {
-  const events = await readEvents();
-  events.push(event);
-  await writeEvents(events);
+// Update heartbeat: write a tombstone-style update file that overrides duration
+// Dashboard will pick the latest duration for a given session+path pair
+export async function updateHeartbeat(sessionId: string, path: string, durationMs: number) {
+  const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  const update = {
+    event_type: 'heartbeat',
+    session_id: sessionId,
+    path,
+    duration_ms: durationMs,
+    created_at: new Date().toISOString(),
+  };
+  await put(`${EVENT_PREFIX}${id}.json`, JSON.stringify(update), {
+    access: 'public',
+    addRandomSuffix: false,
+  });
 }
 
-export async function updateHeartbeat(sessionId: string, path: string, durationMs: number) {
-  const events = await readEvents();
-  for (let i = events.length - 1; i >= 0; i--) {
-    if (events[i].session_id === sessionId && events[i].path === path && events[i].event_type === 'page_view') {
-      events[i].duration_ms = durationMs;
-      break;
+// Read all events by listing blobs — paginated to handle many files
+async function readAllEvents(): Promise<PageEvent[]> {
+  const events: PageEvent[] = [];
+  let cursor: string | undefined;
+
+  do {
+    const result = await list({
+      prefix: EVENT_PREFIX,
+      limit: 1000,
+      cursor,
+    });
+
+    await Promise.all(
+      result.blobs.map(async (blob) => {
+        try {
+          const res = await fetch(blob.url, { cache: 'no-store' });
+          if (!res.ok) return;
+          const evt = await res.json();
+          events.push(evt);
+        } catch {
+          // skip corrupt blobs
+        }
+      }),
+    );
+
+    cursor = result.cursor;
+  } while (cursor);
+
+  return events;
+}
+
+// Merge heartbeat durations into page_view events for accurate time-on-page
+function mergeHeartbeats(events: PageEvent[]): PageEvent[] {
+  // Build a map of latest duration per session+path from heartbeats
+  const durations = new Map<string, number>();
+  for (const e of events) {
+    if (e.event_type === 'heartbeat') {
+      const key = `${e.session_id}|${e.path}`;
+      const existing = durations.get(key) ?? 0;
+      if (e.duration_ms > existing) durations.set(key, e.duration_ms);
     }
   }
-  await writeEvents(events);
-}
 
-export async function ensureTable() {
-  const existing = await head(BLOB_PATH).catch(() => null);
-  if (!existing) {
-    await writeEvents([]);
-  }
+  // Apply to page_view events
+  return events
+    .filter((e) => e.event_type === 'page_view')
+    .map((e) => {
+      const key = `${e.session_id}|${e.path}`;
+      return { ...e, duration_ms: durations.get(key) ?? e.duration_ms };
+    });
 }
 
 // ── Dashboard queries ──
 
 export async function getOverviewStats(days: number = 30) {
-  const events = await readEvents();
+  const all = await readAllEvents();
   const cutoff = new Date(Date.now() - days * 86400000).toISOString();
-  const views = events.filter((e) => e.event_type === 'page_view' && e.created_at > cutoff);
+  const views = mergeHeartbeats(all).filter((e) => e.created_at > cutoff);
 
   const sessions = new Set(views.map((v) => v.session_id));
   const pages = new Set(views.map((v) => v.path));
-  const avgDuration = views.length > 0 ? views.reduce((s, v) => s + (v.duration_ms || 0), 0) / views.length / 1000 : 0;
+  const avgDuration =
+    views.length > 0
+      ? views.reduce((s, v) => s + (v.duration_ms || 0), 0) / views.length / 1000
+      : 0;
 
   return {
     total_views: views.length,
@@ -81,9 +120,9 @@ export async function getOverviewStats(days: number = 30) {
 }
 
 export async function getPageViews(days: number = 30) {
-  const events = await readEvents();
+  const all = await readAllEvents();
   const cutoff = new Date(Date.now() - days * 86400000).toISOString();
-  const views = events.filter((e) => e.event_type === 'page_view' && e.created_at > cutoff);
+  const views = mergeHeartbeats(all).filter((e) => e.created_at > cutoff);
 
   const byPath = new Map<string, { views: number; sessions: Set<string>; totalDuration: number }>();
   for (const v of views) {
@@ -105,9 +144,9 @@ export async function getPageViews(days: number = 30) {
 }
 
 export async function getDailyViews(days: number = 30) {
-  const events = await readEvents();
+  const all = await readAllEvents();
   const cutoff = new Date(Date.now() - days * 86400000).toISOString();
-  const views = events.filter((e) => e.event_type === 'page_view' && e.created_at > cutoff);
+  const views = mergeHeartbeats(all).filter((e) => e.created_at > cutoff);
 
   const byDay = new Map<string, { views: number; sessions: Set<string> }>();
   for (const v of views) {
@@ -124,16 +163,14 @@ export async function getDailyViews(days: number = 30) {
 }
 
 export async function getDeviceBreakdown(days: number = 30) {
-  const events = await readEvents();
+  const all = await readAllEvents();
   const cutoff = new Date(Date.now() - days * 86400000).toISOString();
-  const views = events.filter((e) => e.event_type === 'page_view' && e.created_at > cutoff);
+  const views = mergeHeartbeats(all).filter((e) => e.created_at > cutoff);
 
-  const key = (v: PageEvent) => `${v.device_type || 'Unknown'}|${v.browser || 'Unknown'}|${v.os || 'Unknown'}`;
+  const key = (v: PageEvent) =>
+    `${v.device_type || 'Unknown'}|${v.browser || 'Unknown'}|${v.os || 'Unknown'}`;
   const counts = new Map<string, number>();
-  for (const v of views) {
-    const k = key(v);
-    counts.set(k, (counts.get(k) || 0) + 1);
-  }
+  for (const v of views) counts.set(key(v), (counts.get(key(v)) || 0) + 1);
 
   return Array.from(counts.entries())
     .map(([k, count]) => {
@@ -144,9 +181,9 @@ export async function getDeviceBreakdown(days: number = 30) {
 }
 
 export async function getGeoBreakdown(days: number = 30) {
-  const events = await readEvents();
+  const all = await readAllEvents();
   const cutoff = new Date(Date.now() - days * 86400000).toISOString();
-  const views = events.filter((e) => e.event_type === 'page_view' && e.created_at > cutoff);
+  const views = mergeHeartbeats(all).filter((e) => e.created_at > cutoff);
 
   const byGeo = new Map<string, { views: number; sessions: Set<string> }>();
   for (const v of views) {
@@ -166,9 +203,9 @@ export async function getGeoBreakdown(days: number = 30) {
 }
 
 export async function getSessionTimelines(days: number = 7) {
-  const events = await readEvents();
+  const all = await readAllEvents();
   const cutoff = new Date(Date.now() - days * 86400000).toISOString();
-  const views = events.filter((e) => e.event_type === 'page_view' && e.created_at > cutoff);
+  const views = mergeHeartbeats(all).filter((e) => e.created_at > cutoff);
 
   return views
     .map((v) => ({
@@ -185,3 +222,6 @@ export async function getSessionTimelines(days: number = 7) {
       return cmp !== 0 ? cmp : a.created_at.localeCompare(b.created_at);
     });
 }
+
+// Legacy — no longer needed but kept for compatibility
+export async function ensureTable() {}
