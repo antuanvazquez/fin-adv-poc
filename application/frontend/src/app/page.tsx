@@ -80,7 +80,7 @@ export default function Home() {
           Hey Alanna, hey Joe — everything here is tentative. Start
           with the video, then the executive summary. The supporting docs
           are deeper dives if you want them. The prototype uses mock data
-          but some AI features already work. Can't wait to hear your thoughts.
+          but some AI features already work. Can&apos;t wait to hear your&nbsp;thoughts.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-8 sm:mt-10 w-full">
