@@ -47,7 +47,6 @@ export default function VideoPage() {
     (v as HTMLVideoElement & { webkitPreservesPitch?: boolean }).webkitPreservesPitch = true;
   }, [speed]);
 
-  // Fullscreen change listener
   useEffect(() => {
     const handler = () => {
       const active = !!(
@@ -99,15 +98,12 @@ export default function VideoPage() {
   };
 
   const enterFullscreen = async () => {
-    // On iOS Safari, use the video element's native fullscreen for true fullscreen
     const v = videoRef.current;
     const el = containerRef.current;
-
     if (v && typeof (v as HTMLVideoElement & { webkitEnterFullscreen?: () => void }).webkitEnterFullscreen === 'function') {
       (v as HTMLVideoElement & { webkitEnterFullscreen: () => void }).webkitEnterFullscreen();
       return;
     }
-
     if (el?.requestFullscreen) {
       await el.requestFullscreen();
     } else if ((el as HTMLDivElement & { webkitRequestFullscreen?: () => Promise<void> })?.webkitRequestFullscreen) {
@@ -128,7 +124,9 @@ export default function VideoPage() {
     else enterFullscreen();
   };
 
-  const seekTo = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+  const handleProgressInteraction = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
     const v = videoRef.current;
     const bar = progressRef.current;
     if (!v || !bar || !v.duration) return;
@@ -147,10 +145,10 @@ export default function VideoPage() {
     scheduleHide();
   };
 
-  const handleContainerTap = (e: React.MouseEvent | React.TouchEvent) => {
-    // Don't toggle play if tapping on controls
-    if ((e.target as HTMLElement).closest('[data-controls]')) return;
-    if (showControls && playing) {
+  const handleVideoAreaTap = () => {
+    if (!playing) {
+      togglePlay();
+    } else if (showControls) {
       togglePlay();
     } else {
       scheduleHide();
@@ -164,7 +162,6 @@ export default function VideoPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#0A0F1C]">
-      {/* Nav */}
       <nav className="sticky top-0 z-20 backdrop-blur-md bg-[#0A0F1C]/80 border-b border-[#1E2A45]/50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <Link
@@ -184,7 +181,6 @@ export default function VideoPage() {
         </div>
       </nav>
 
-      {/* Main */}
       <div className="flex-1 flex flex-col items-center justify-center px-0 sm:px-4 py-4 sm:py-12">
         <div className="w-full max-w-4xl mb-3 sm:mb-6 text-center px-4">
           <h1 className="text-xl sm:text-2xl font-semibold text-[#F0F0F5] mb-1">
@@ -195,26 +191,23 @@ export default function VideoPage() {
           </p>
         </div>
 
-        {/* Video container */}
         <div
           ref={containerRef}
           className={`relative bg-black w-full max-w-4xl ${isFs ? '' : 'sm:rounded-2xl'} overflow-hidden`}
           style={{ aspectRatio: isFs ? undefined : '16/9' }}
-          onClick={handleContainerTap}
-          onTouchEnd={(e) => {
-            if ((e.target as HTMLElement).closest('[data-controls]')) return;
-            e.preventDefault();
-            if (showControls && playing) {
-              togglePlay();
-            } else {
-              scheduleHide();
-            }
-          }}
         >
+          {/* Tappable video area — handles play/pause and show controls */}
+          <button
+            type="button"
+            className="absolute inset-0 z-10 w-full h-full cursor-pointer bg-transparent border-none outline-none"
+            onClick={handleVideoAreaTap}
+            aria-label={playing ? 'Pause' : 'Play'}
+          />
+
           <video
             ref={videoRef}
             src="/video.mp4"
-            className={`w-full h-full ${isFs ? 'object-contain' : 'object-contain'}`}
+            className="w-full h-full object-contain"
             playsInline
             onPlay={() => setPlaying(true)}
             onPause={() => setPlaying(false)}
@@ -229,29 +222,32 @@ export default function VideoPage() {
             onEnded={() => setPlaying(false)}
           />
 
-          {/* Controls overlay */}
+          {/* Controls overlay — z-20 to sit above the tap area */}
           <div
-            data-controls
-            className={`absolute inset-0 flex flex-col justify-end transition-opacity duration-300 ${
+            className={`absolute inset-x-0 bottom-0 z-20 transition-opacity duration-300 ${
               showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'
             }`}
           >
-            {/* Gradient scrim */}
-            <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+            <div className="h-28 sm:h-36 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
 
-            <div className="relative z-10 px-3 sm:px-5 pb-3 sm:pb-4 space-y-2.5">
-              {/* Progress bar */}
+            <div className="absolute inset-x-0 bottom-0 px-3 sm:px-5 pb-3 sm:pb-4 space-y-2.5">
+              {/* Progress bar — larger touch target */}
               <div
                 ref={progressRef}
-                className="w-full h-[6px] sm:h-[5px] bg-white/20 rounded-full cursor-pointer touch-none"
-                onClick={(e) => { e.stopPropagation(); seekTo(e); }}
-                onTouchStart={(e) => { e.stopPropagation(); seekTo(e); }}
+                className="w-full py-2 cursor-pointer"
+                onClick={handleProgressInteraction}
+                onTouchStart={handleProgressInteraction}
+                onTouchMove={handleProgressInteraction}
               >
-                <div
-                  className="h-full bg-[#C9A962] rounded-full relative"
-                  style={{ width: `${progress}%` }}
-                >
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-3 sm:h-3 bg-[#C9A962] rounded-full shadow-lg" />
+                <div className="w-full h-[6px] sm:h-[5px] bg-white/20 rounded-full relative">
+                  <div
+                    className="h-full bg-[#C9A962] rounded-full"
+                    style={{ width: `${progress}%` }}
+                  />
+                  <div
+                    className="absolute top-1/2 -translate-y-1/2 w-4 h-4 sm:w-3 sm:h-3 bg-[#C9A962] rounded-full shadow-lg"
+                    style={{ left: `${progress}%`, marginLeft: '-8px' }}
+                  />
                 </div>
               </div>
 
@@ -264,7 +260,6 @@ export default function VideoPage() {
               {/* Controls row */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1">
-                  {/* Play/pause */}
                   <button
                     onClick={(e) => { e.stopPropagation(); togglePlay(); scheduleHide(); }}
                     className="w-10 h-10 flex items-center justify-center text-white active:scale-90 transition-transform"
@@ -272,7 +267,6 @@ export default function VideoPage() {
                     {playing ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 ml-0.5" />}
                   </button>
 
-                  {/* Restart */}
                   <button
                     onClick={(e) => { e.stopPropagation(); restart(); }}
                     className="w-10 h-10 flex items-center justify-center text-white/50 active:text-white transition-colors"
@@ -280,7 +274,6 @@ export default function VideoPage() {
                     <RotateCcw className="w-4 h-4" />
                   </button>
 
-                  {/* Mute */}
                   <button
                     onClick={(e) => { e.stopPropagation(); toggleMute(); }}
                     className="w-10 h-10 flex items-center justify-center text-white/50 active:text-white transition-colors"
@@ -290,7 +283,6 @@ export default function VideoPage() {
                 </div>
 
                 <div className="flex items-center gap-1">
-                  {/* Speed */}
                   <div className="relative">
                     <button
                       onClick={(e) => { e.stopPropagation(); setShowSpeedPicker(!showSpeedPicker); scheduleHide(); }}
@@ -322,7 +314,6 @@ export default function VideoPage() {
                     )}
                   </div>
 
-                  {/* Fullscreen */}
                   <button
                     onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
                     className="w-10 h-10 flex items-center justify-center text-white/50 active:text-white transition-colors"
@@ -334,16 +325,17 @@ export default function VideoPage() {
             </div>
           </div>
 
-          {/* Big play button when paused and not scrubbing */}
+          {/* Big center play button */}
           {!playing && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button
-                onClick={(e) => { e.stopPropagation(); togglePlay(); }}
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/60 border border-white/20 flex items-center justify-center backdrop-blur-sm active:scale-90 transition-transform"
-              >
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); togglePlay(); }}
+              className="absolute inset-0 z-30 flex items-center justify-center bg-transparent border-none outline-none"
+            >
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/60 border border-white/20 flex items-center justify-center backdrop-blur-sm active:scale-90 transition-transform">
                 <Play className="w-7 h-7 sm:w-9 sm:h-9 text-white ml-1" />
-              </button>
-            </div>
+              </div>
+            </button>
           )}
         </div>
       </div>
