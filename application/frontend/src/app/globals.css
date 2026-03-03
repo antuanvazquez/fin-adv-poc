@@ -149,6 +149,64 @@
   margin: 1.25rem 0;
   border: 1px solid #1E2A45;
   border-radius: 0.75rem;
+  position: relative;
+}
+
+/* Right-edge fade hint when table overflows */
+.doc-article .table-wrap::after {
+  content: '';
+  position: sticky;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Swipe hint for mobile */
+@media (max-width: 640px) {
+  .doc-article .table-wrap {
+    position: relative;
+  }
+
+  .doc-article .table-wrap::before {
+    content: 'Swipe \2192';
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 5;
+    font-size: 0.5625rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #C9A962;
+    background: rgba(13, 20, 36, 0.85);
+    backdrop-filter: blur(4px);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.375rem;
+    border: 1px solid rgba(201, 169, 98, 0.2);
+    pointer-events: none;
+    animation: scroll-hint-fade 3s ease-in-out forwards;
+  }
+
+  .doc-article .table-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 2rem;
+    background: linear-gradient(to right, transparent, rgba(10, 15, 28, 0.8));
+    pointer-events: none;
+    border-radius: 0 0.75rem 0.75rem 0;
+    z-index: 4;
+    animation: scroll-hint-fade 4s ease-in-out forwards;
+  }
+}
+
+@keyframes scroll-hint-fade {
+  0%, 60% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .doc-article table {
