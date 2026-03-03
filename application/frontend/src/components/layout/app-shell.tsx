@@ -1,12 +1,35 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Menu } from 'lucide-react';
 import { Sidebar } from './sidebar';
 
+const DESKTOP_WIDTH = 1100;
+const TOP_BAR_HEIGHT = 52;
+
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [scale, setScale] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const compute = () => {
+      const vw = window.innerWidth;
+      const mobile = vw < 1024;
+      setIsMobile(mobile);
+      if (mobile) {
+        setScale(Math.min(1, vw / DESKTOP_WIDTH));
+      } else {
+        setScale(1);
+      }
+    };
+    compute();
+    window.addEventListener('resize', compute);
+    return () => window.removeEventListener('resize', compute);
+  }, []);
+
+  const scaledHeight = isMobile ? `${100 / scale}%` : 'auto';
 
   return (
     <div className="flex min-h-screen">
@@ -33,9 +56,29 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <span className="text-xs text-[#4A5068] font-medium tracking-wide">POC Preview</span>
       </div>
 
-      <main className="flex-1 lg:ml-[260px] p-4 pt-16 lg:pt-8 lg:p-8">
-        {children}
-      </main>
+      {isMobile ? (
+        <div
+          className="flex-1 overflow-x-hidden"
+          style={{ paddingTop: TOP_BAR_HEIGHT }}
+        >
+          <div
+            style={{
+              width: DESKTOP_WIDTH,
+              transform: `scale(${scale})`,
+              transformOrigin: 'top left',
+              minHeight: scaledHeight,
+            }}
+          >
+            <main className="p-8">
+              {children}
+            </main>
+          </div>
+        </div>
+      ) : (
+        <main className="flex-1 lg:ml-[260px] p-8">
+          {children}
+        </main>
+      )}
     </div>
   );
 }
