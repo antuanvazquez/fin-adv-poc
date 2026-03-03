@@ -47,9 +47,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </button>
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm text-[#8B8FA3] hover:text-[#C9A962] transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-[#8B8FA3] hover:text-[#C9A962] transition-colors py-1.5 px-2 -ml-2 rounded-lg active:bg-[#1E2A45]/30"
           >
-            <ArrowLeft className="w-3.5 h-3.5" />
+            <ArrowLeft className="w-5 h-5" />
             Portal
           </Link>
         </div>
