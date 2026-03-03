@@ -31,7 +31,7 @@ const cards = [
   {
     title: 'Explore the POC',
     description:
-      'See the platform in action — AI-powered planning, communication hub, life signals, and more.',
+      'Uses mock data — some of the AI features are already functional. Play around and get a feel for the direction.',
     icon: LayoutDashboard,
     href: '/dashboard',
     accent: true,
