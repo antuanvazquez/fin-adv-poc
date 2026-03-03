@@ -77,11 +77,12 @@ export default function Home() {
           <span className="text-[#C9A962]">Intelligence Platform</span>
         </h1>
         <p className="text-[#8B8FA3] mt-3 text-sm sm:text-base md:text-lg text-center max-w-xl px-2">
-          Welcome, partners. This is a work in progress — start with the
-          Executive Summary or the intro video for the big picture. The
-          supporting documents are deeper dives into the research and analysis
-          behind it. The Proof of Concept (POC) is an early, working prototype
-          for us to tweak and begin to get a sense of what the platform should look and feel like.
+          Hey Alanna, hey Joe — everything here is a starting point
+          for us to shape together. Start with the video, then check out the
+          executive summary. The supporting docs are deeper dives if you want
+          them. And the prototype is an early peek at what the platform
+          could look and feel like — play around with it. Nothing is set
+          in stone. Would love your thoughts.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-8 sm:mt-10 w-full">
