@@ -54,7 +54,7 @@ Build fast, validate with insiders. AI-assisted development means a functional P
 | AWS infrastructure (hosting POC) | $100 | ~$50–$100/mo for lightweight deployment |
 | Domain registration + marketing site hosting | $40 | |
 | Discovery calls (5–15 advisors via XYPN/NAPFA) | $500 | Assumes mostly phone/video; can be much higher if a lot are in-person with meals or travel |
-| Legal (entity formation, initial counsel) | $1,500–$5,000 | Basic structure ~$1,500; if we pursue a Delaware C-Corp with outside counsel (recommended if future fundraising is likely), $3,000–$5,000+ (optional) |
+| Legal (entity formation, initial counsel) | $1,500–$5,000 | Basic structure ~$1,500; if we pursue a Delaware C-Corp with outside corporate counsel (recommended if future fundraising is likely), $3,000–$5,000+ (optional) |
 | **Phase 0 Total** | **~$3,140–$6,640 + eng** | |
 
 **What gets delivered:** A functional POC deployed online for Alanna, Joe, and a small group of trusted advisors to test and provide feedback. Entity formed. Initial advisor discovery calls underway.
@@ -81,7 +81,7 @@ Incorporate feedback from Phase 0 into a production-ready MVP with compliance fo
 
 | Item | Cost | Notes |
 |---|---|---|
-| Contract engineer | $48,000 | ~$75/hr x 20 hrs/wk x 8 months ($6K/mo, continued from Phase 1) |
+| Contract engineer | $36,000 | ~$75/hr x 15 hrs/wk x 8 months ($4,500/mo, continued from Phase 1) |
 | AWS infrastructure (scaling) | $6,000 | ~$750/mo x 8 months, scaling up as users onboard |
 | Anthropic/Bedrock AI credits | $2,600 | Ramps from ~$150/mo (month 5) to ~$500/mo (month 12) as usage grows; partially offset via Bedrock on AWS credits |
 | Plaid/MX account aggregation fees | $4,000 | ~$500/mo at early scale |
@@ -89,9 +89,9 @@ Incorporate feedback from Phase 0 into a production-ready MVP with compliance fo
 | — Marketing person or agency | $32,000 | $3,000–$5,000/mo x 8 months (avg ~$4K/mo) — strategy, copy, creative, video |
 | — LinkedIn ads (targeting RIAs) | $16,000 | $2K/mo x 8 months. [LinkedIn B2B CPL: ~$90–$150](https://www.flyweel.co/blog/lead-gen-cpl-cac-benchmark-index-2025) |
 | — Facebook/Instagram ads (retargeting) | $20,000 | $2.5K/mo x 8 months — [CPL ~$25 for finance retargeting](https://www.superads.ai/facebook-ads-costs/cost-per-lead/finance/united-states) |
-| **Phase 2 Total (before credits)** | **$128,600** | |
+| **Phase 2 Total (before credits)** | **$116,600** | |
 | [AWS Activate Portfolio credits](https://blogs.nvidia.com/blog/nvidia-inception-aws-activate-startups/) | –$25,000 | Via [NVIDIA Inception](https://www.nvidia.com/en-us/startups/) (free to join, [up to $100K in AWS credits](https://blogs.nvidia.com/blog/nvidia-inception-aws-activate-startups/)) |
-| **Phase 2 Total (after credits)** | **~$103,600** | AWS credits only offset AWS usage (infra + Bedrock); other line items are not reduced |
+| **Phase 2 Total (after credits)** | **~$91,600** | AWS credits only offset AWS usage (infra + Bedrock); other line items are not reduced |
 
 ### Cloud Credits — Potential Offsets
 
@@ -107,9 +107,9 @@ Credits only offset AWS usage (infrastructure, Bedrock AI calls, S3, etc.) — t
 
 | Item | Est. Annual Cost | When |
 |---|---|---|
-| [ISO 27001 certification](https://secureleap.tech/blog/the-real-cost-of-iso-27001-certification-for-startups-in-2025) | $20,000–$35,000 | Year 2 (SOC 2 comes first; ISO adds international credibility) |
-| [SOC 2 Type II annual renewal](https://soc2auditors.org/insights/soc-2-type-2-audit-cost) | $20,000 | Annually from Year 2 |
+| [SOC 2 Type II annual renewal](https://soc2auditors.org/insights/soc-2-type-2-audit-cost) | $8,000–$15,000 | Annually from Year 2; lower end realistic with Vanta continuous monitoring already in place |
 | Compliance automation (Vanta/Drata) ongoing | $10,000/yr | Annual subscription |
+| [ISO 27001 certification](https://secureleap.tech/blog/the-real-cost-of-iso-27001-certification-for-startups-in-2025) | $15,000–$25,000 initial; $5,000–$10,000/yr renewal | Only if selling to international or enterprise buyers — most US RIA clients require SOC 2 only |
 | Full-time marketing hire | $60,000–$80,000 | When MRR exceeds $30K/mo |
 | Customer success hire | $50,000–$70,000 | When client count exceeds 30 advisors |
 
@@ -130,22 +130,22 @@ Credits only offset AWS usage (infrastructure, Bedrock AI calls, S3, etc.) — t
 |---|---|---|---|---|---|---|
 | 1 | 0 | 0 | $0 | ~$3,100 | –$3,100 | –$3,100 |
 | 2–4 | 0 | 0 | $0 | ~$7,900/mo | –$23,700 | –$26,800 |
-| 5 | 1 | 260 | $6,500 | ~$16,000 | –$9,500 | –$36,300 |
-| 6 | 3 | 560 | $14,000 | ~$16,000 | –$2,000 | –$38,300 |
-| 7 | 5 | 860 | $21,500 | ~$16,000 | +$5,500 | –$32,800 |
-| 8 | 7 | 1,060 | $26,500 | ~$16,500 | +$10,000 | –$22,800 |
-| 9 | 9 | 1,260 | $31,500 | ~$16,500 | +$15,000 | –$7,800 |
-| 10 | 11 | 1,460 | $36,500 | ~$17,000 | +$19,500 | +$11,700 |
-| 11 | 13 | 1,660 | $41,500 | ~$17,000 | +$24,500 | +$36,200 |
-| **12** | **15** | **1,960** | **$49,000** | ~$17,500 | **+$31,500** | **+$67,700** |
+| 5 | 1 | 260 | $6,500 | ~$14,500 | –$8,000 | –$34,800 |
+| 6 | 3 | 560 | $14,000 | ~$14,500 | –$500 | –$35,300 |
+| 7 | 5 | 860 | $21,500 | ~$14,500 | +$7,000 | –$28,300 |
+| 8 | 7 | 1,060 | $26,500 | ~$15,000 | +$11,500 | –$16,800 |
+| 9 | 9 | 1,260 | $31,500 | ~$15,000 | +$16,500 | –$300 |
+| 10 | 11 | 1,460 | $36,500 | ~$15,500 | +$21,000 | +$20,700 |
+| 11 | 13 | 1,660 | $41,500 | ~$15,500 | +$26,000 | +$46,700 |
+| **12** | **15** | **1,960** | **$49,000** | ~$16,000 | **+$33,000** | **+$79,700** |
 
 **Break-even: Month 7** (MRR exceeds monthly operating costs)
 
-**Fully self-funded: Month 10** (cumulative revenue has repaid all invested cash)
+**Fully self-funded: Month 9–10** (cumulative revenue has repaid all invested cash)
 
 **Year 1 total revenue: ~$227,000** (months 5–12)
 
-*Note: Monthly burn includes contract engineer and marketing but excludes Antuan's engineering (negotiable). Phase 1 burn includes SOC 2 ($15K). AWS credits reduce actual cash outflow further — see Cloud Credits table.*
+*Note: Monthly burn includes contract engineer (15 hrs/wk) and marketing but excludes Antuan's engineering (negotiable). Phase 1 burn includes SOC 2 ($15K). AWS credits reduce actual cash outflow further — see Cloud Credits table.*
 
 ### Growth Potential
 
@@ -173,8 +173,8 @@ Valuation multiples reflect typical early-stage vertical SaaS in fintech (compar
 |---|---|---|
 | Phase 0 (validation + POC) | ~$3,100–$6,600 + eng | Month 1 (higher end if Delaware C-Corp with outside counsel) |
 | Phase 1 (MVP build) | ~$26,700 + eng | Months 2–4 (after $1K AWS credit) |
-| Phase 2 (growth — after $25K credit) | ~$103,600 | Months 5–12 |
-| **Gross cash needed (excl. Antuan eng)** | **~$133,400–$136,900** | Over 12 months |
+| Phase 2 (growth — after $25K credit) | ~$91,600 | Months 5–12 |
+| **Gross cash needed (excl. Antuan eng)** | **~$121,400–$124,900** | Over 12 months |
 | Additional AWS credits possible | up to –$75,000 more | If full NVIDIA Inception or VC-backed credits secured |
 | Revenue generated (months 5–12) | –$227,000 | |
 
@@ -207,7 +207,7 @@ Even in the worst case, the investment is modest relative to the revenue opportu
 
 ## Next Steps
 
-1. **Week 1:** Agree on equity split among the three partners. Form the entity (LLC or C-Corp — if future fundraising is likely, a Delaware C-Corp with outside counsel is worth considering).
+1. **Week 1:** Agree on equity split among the three partners. Form the entity (LLC or C-Corp — if future fundraising is likely, a Delaware C-Corp with outside corporate counsel is worth considering).
 2. **Week 2:** Apply for [AWS Activate](https://aws.amazon.com/activate/founders/) (Founders — immediate $1K). Apply for [NVIDIA Inception](https://www.nvidia.com/en-us/startups/) (free, up to $100K in AWS credits). Deploy POC for insider testing.
 3. **Weeks 2–4:** Begin 5–15 discovery calls with target advisors. Incorporate feedback into MVP scope.
 4. **Month 2:** Begin Phase 1 MVP build. Initiate SOC 2 readiness research.
