@@ -109,7 +109,6 @@ Credits only offset AWS usage (infrastructure, Bedrock AI calls, S3, etc.) — t
 |---|---|---|
 | [SOC 2 Type II annual renewal](https://soc2auditors.org/insights/soc-2-type-2-audit-cost) | $8,000–$15,000 | Annually from Year 2; lower end realistic with Vanta continuous monitoring already in place |
 | Compliance automation (Vanta/Drata) ongoing | $10,000/yr | Annual subscription |
-| [ISO 27001 certification](https://secureleap.tech/blog/the-real-cost-of-iso-27001-certification-for-startups-in-2025) | $15,000–$25,000 initial; $5,000–$10,000/yr renewal | Only if selling to international or enterprise buyers — most US RIA clients require SOC 2 only |
 | Full-time marketing hire | $60,000–$80,000 | When MRR exceeds $30K/mo |
 | Customer success hire | $50,000–$70,000 | When client count exceeds 30 advisors |
 
