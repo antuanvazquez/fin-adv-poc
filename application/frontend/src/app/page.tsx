@@ -1,0 +1,152 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import {
+  Sparkles,
+  FileText,
+  FolderOpen,
+  Play,
+  LayoutDashboard,
+  ArrowRight,
+} from 'lucide-react';
+import Link from 'next/link';
+
+const cards = [
+  {
+    title: 'Executive Summary',
+    description: 'The opportunity, revenue model, cost roadmap, and investment overview — all in one page.',
+    icon: FileText,
+    href: '/docs/executive-summary',
+    accent: true,
+  },
+  {
+    title: 'Detailed Documents',
+    description: 'Market research, competitive analysis, compliance, technology roadmap, and more.',
+    icon: FolderOpen,
+    href: '/docs',
+    accent: false,
+  },
+  {
+    title: 'Watch Intro Video',
+    description: 'A quick walkthrough of the platform vision and what the POC demonstrates.',
+    icon: Play,
+    href: '#',
+    accent: false,
+    comingSoon: true,
+  },
+  {
+    title: 'Explore the POC',
+    description: 'See the platform in action — AI-powered planning, communication hub, life signals, and more.',
+    icon: LayoutDashboard,
+    href: '/dashboard',
+    accent: true,
+  },
+];
+
+export default function Home() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-16">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,169,98,0.06)_0%,_transparent_60%)]" />
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7 }}
+        className="relative z-10 flex flex-col items-center w-full max-w-3xl"
+      >
+        <motion.div
+          animate={{
+            boxShadow: [
+              '0 0 20px rgba(201,169,98,0.1)',
+              '0 0 40px rgba(201,169,98,0.2)',
+              '0 0 20px rgba(201,169,98,0.1)',
+            ],
+          }}
+          transition={{ duration: 3, repeat: Infinity }}
+          className="w-16 h-16 rounded-2xl bg-[#131A2E] border border-[#C9A962]/20 flex items-center justify-center mb-6"
+        >
+          <Sparkles className="w-8 h-8 text-[#C9A962]" />
+        </motion.div>
+
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-center">
+          Financial Advisory{' '}
+          <span className="text-[#C9A962]">Intelligence Platform</span>
+        </h1>
+        <p className="text-[#8B8FA3] mt-3 text-base md:text-lg text-center max-w-xl">
+          Welcome, partners. Everything you need to evaluate the opportunity is
+          here — the business case, the research, and a working proof of concept.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10 w-full">
+          {cards.map((card, i) => (
+            <motion.div
+              key={card.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 * i }}
+            >
+              {card.comingSoon ? (
+                <div className="group relative rounded-2xl border border-[#1E2A45] bg-[#0D1424]/80 p-6 h-full flex flex-col justify-between opacity-50 cursor-default">
+                  <CardContent card={card} />
+                  <span className="absolute top-4 right-4 text-[10px] uppercase tracking-widest text-[#4A5068] font-semibold">
+                    Coming soon
+                  </span>
+                </div>
+              ) : (
+                <Link href={card.href} className="block h-full">
+                  <div
+                    className={`group relative rounded-2xl border p-6 h-full flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] ${
+                      card.accent
+                        ? 'border-[#C9A962]/30 bg-gradient-to-br from-[#C9A962]/5 to-[#0D1424]/80 hover:border-[#C9A962]/50'
+                        : 'border-[#1E2A45] bg-[#0D1424]/80 hover:border-[#2A3A5C]'
+                    }`}
+                  >
+                    <CardContent card={card} />
+                  </div>
+                </Link>
+              )}
+            </motion.div>
+          ))}
+        </div>
+
+        <p className="text-xs text-[#4A5068] mt-10 text-center">
+          Confidential — Partner Preview Only
+        </p>
+      </motion.div>
+    </div>
+  );
+}
+
+function CardContent({
+  card,
+}: {
+  card: (typeof cards)[number];
+}) {
+  const Icon = card.icon;
+  return (
+    <>
+      <div>
+        <div
+          className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${
+            card.accent
+              ? 'bg-[#C9A962]/10 text-[#C9A962]'
+              : 'bg-[#131A2E] text-[#8B8FA3]'
+          }`}
+        >
+          <Icon className="w-5 h-5" />
+        </div>
+        <h3 className="text-lg font-semibold text-[#F0F0F5] mb-1">
+          {card.title}
+        </h3>
+        <p className="text-sm text-[#8B8FA3] leading-relaxed">
+          {card.description}
+        </p>
+      </div>
+      {!card.comingSoon && (
+        <div className="flex items-center gap-1 text-xs text-[#C9A962] mt-4 font-medium group-hover:gap-2 transition-all">
+          Open <ArrowRight className="w-3 h-3" />
+        </div>
+      )}
+    </>
+  );
+}

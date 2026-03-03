@@ -1,0 +1,7 @@
+.DS_Store
+.env*
+*.pem
+node_modules/
+.next/
+.vercel
+*.pdf
