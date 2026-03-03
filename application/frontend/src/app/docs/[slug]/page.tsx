@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Home } from 'lucide-react';
 import { getDocBySlug, renderMarkdown, DOC_REGISTRY } from '@/lib/docs';
+import { ScrollHint } from '@/components/scroll-hint';
 
 export function generateStaticParams() {
   return DOC_REGISTRY.filter((d) => d.slug !== 'executive-summary').map(
@@ -52,6 +53,8 @@ export default async function DocPage({
           className="doc-article"
           dangerouslySetInnerHTML={{ __html: html }}
         />
+
+        <ScrollHint />
 
         <footer className="mt-16 pt-6 border-t border-[#1E2A45]/50 text-center">
           <p className="text-xs text-[#4A5068]">

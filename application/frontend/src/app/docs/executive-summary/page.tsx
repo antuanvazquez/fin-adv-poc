@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowLeft, FolderOpen } from 'lucide-react';
 import { renderMarkdown } from '@/lib/docs';
+import { ScrollHint } from '@/components/scroll-hint';
 
 export default async function ExecSummaryPage() {
   const html = await renderMarkdown('executive_summary.md');
@@ -31,6 +32,8 @@ export default async function ExecSummaryPage() {
           className="doc-article"
           dangerouslySetInnerHTML={{ __html: html }}
         />
+
+        <ScrollHint />
 
         <footer className="mt-16 pt-6 border-t border-[#1E2A45]/50 text-center">
           <p className="text-xs text-[#4A5068]">

@@ -158,7 +158,9 @@
   border-radius: 0.75rem;
 }
 
-/* Swipe hint badge + right-edge gradient (mobile only) */
+/* Swipe hint badge + right-edge gradient (mobile only).
+   Controlled by JS IntersectionObserver — starts hidden,
+   .scroll-hint-visible triggers show, .scroll-hint-done triggers fade-out. */
 @media (max-width: 640px) {
   .doc-article .table-outer::before {
     content: '\2190  Swipe  \2192';
@@ -175,7 +177,16 @@
     padding: 0.3rem 0.65rem;
     border-radius: 0.375rem;
     pointer-events: none;
-    animation: scroll-hint-fade 8s ease-in-out forwards;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .doc-article .table-outer.scroll-hint-visible::before {
+    opacity: 1;
+  }
+
+  .doc-article .table-outer.scroll-hint-done::before {
+    opacity: 0;
   }
 
   .doc-article .table-outer::after {
@@ -188,13 +199,17 @@
     background: linear-gradient(to right, transparent, rgba(10, 15, 28, 0.9));
     pointer-events: none;
     z-index: 4;
-    animation: scroll-hint-fade 10s ease-in-out forwards;
+    opacity: 0;
+    transition: opacity 0.6s ease;
   }
-}
 
-@keyframes scroll-hint-fade {
-  0%, 70% { opacity: 1; }
-  100% { opacity: 0; }
+  .doc-article .table-outer.scroll-hint-visible::after {
+    opacity: 1;
+  }
+
+  .doc-article .table-outer.scroll-hint-done::after {
+    opacity: 0;
+  }
 }
 
 .doc-article table {
